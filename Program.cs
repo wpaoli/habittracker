@@ -1,4 +1,15 @@
+
+using Microsoft.EntityFrameworkCore;
+using HabitTracker;
+
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<HabitTrackerDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
 
 // Add services
 builder.Services.AddControllers(); // enable traditional controller support
